@@ -40,8 +40,9 @@ class EmployeeBloc {
   final _employeeSalaryIncrementStreamController = StreamController<Employee>();
   final _employeeSalaryDecrementStreamController = StreamController<Employee>();
 
-//4.
-// getter
+
+
+//4. getter
   Stream<List<Employee>> get employeeListStream =>
       _employeeListSteamController.stream;
 
@@ -51,8 +52,10 @@ class EmployeeBloc {
   StreamSink<Employee> get employeeSalaryIncrement =>
       _employeeSalaryIncrementStreamController.sink;
 
-  StreamSink<Employee> get _employeeSalaryDecrement =>
+  StreamSink<Employee> get employeeSalaryDecrement =>
       _employeeSalaryDecrementStreamController.sink;
+
+
 
 //5. constructors
   EmployeeBloc() {
@@ -64,15 +67,15 @@ class EmployeeBloc {
 //6. core functions
   _incrementSalary(Employee employee) {
     double salary = employee.salary;
-    double _incrementedSalary = salary * 20 / 100;
-    _employeeList[employee.id - 1].salary + _incrementedSalary;
+    double _incrementedSalary = salary + salary * 20 / 100;
+    _employeeList[employee.id - 1].salary = _incrementedSalary;
     employeeListSink.add(_employeeList);
   }
 
   _decrementSalary(Employee employee) {
     double salary = employee.salary;
-    double _decrementedSalary = salary * 20 / 100;
-    _employeeList[employee.id - 1].salary - _decrementedSalary;
+    double _decrementedSalary = salary + salary * 20 / 100;
+    _employeeList[employee.id - 1].salary = _decrementedSalary;
     employeeListSink.add(_employeeList);
   }
 
