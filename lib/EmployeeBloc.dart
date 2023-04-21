@@ -24,7 +24,7 @@ class EmployeeBloc {
   // stream to get the data
   // pipe = data flow
 
-  List<Employee> _employeeList = [
+  final List<Employee> _employeeList = [
     Employee(1, "Sachin", 10000.0),
     Employee(2, "Sumit", 12000.0),
     Employee(3, "Vishal", 14000.0),
